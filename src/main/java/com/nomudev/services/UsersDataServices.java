@@ -14,6 +14,39 @@
 */
 package com.nomudev.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import com.nomudev.models.usersDataModel;
+import com.nomudev.repositories.IUsersDataRepo;
+
+@Service
 public class UsersDataServices {
+    @Autowired
+    IUsersDataRepo usersDataRepo;
+
+    public List<usersDataModel> getAllBills() {
+        return usersDataRepo.findAll();
+    }
+
+    public usersDataModel getBillById(Long id) {
+        return usersDataRepo.findById(id).orElse(null);
+    }
+
+    public usersDataModel saveBill(usersDataModel bill) {
+        return usersDataRepo.save(bill);
+    }
+
+    public Boolean deleteBillById(Long id) {
+
+        try {
+            usersDataRepo.deleteById(id);
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 
 }

@@ -14,6 +14,38 @@
 */
 package com.nomudev.services;
 
-public class ProviderServices {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import com.nomudev.models.ProviderModel;
+import com.nomudev.repositories.IProviderRepo;
 
+@Service
+public class ProviderServices {
+    @Autowired
+    IProviderRepo providerRepo;
+
+    public List<ProviderModel> getAllCats() {
+        return providerRepo.findAll();
+    }
+
+    public ProviderModel getCatById(Long id) {
+        return providerRepo.findById(id).orElse(null);
+    }
+
+    public ProviderModel saveBill(ProviderModel bill) {
+        return providerRepo.save(bill);
+    }
+
+    public Boolean deleteCatById(Long id) {
+
+        try {
+            providerRepo.deleteById(id);
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 }

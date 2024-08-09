@@ -14,6 +14,38 @@
 */
 package com.nomudev.services;
 
-public class CatServices {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import com.nomudev.models.CatModel;
+import com.nomudev.repositories.ICatRepo;
 
+@Service
+public class CatServices {
+    @Autowired
+    ICatRepo catRepo;
+
+    public List<CatModel> getAllCats() {
+        return catRepo.findAll();
+    }
+
+    public CatModel getCatById(Long id) {
+        return catRepo.findById(id).orElse(null);
+    }
+
+    public CatModel saveBill(CatModel bill) {
+        return catRepo.save(bill);
+    }
+
+    public Boolean deleteCatById(Long id) {
+
+        try {
+            catRepo.deleteById(id);
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 }

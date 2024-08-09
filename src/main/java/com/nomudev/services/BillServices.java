@@ -33,4 +33,19 @@ public class BillServices {
         return billRepo.findById(id).orElse(null);
     }
 
+    public BillModel saveBill(BillModel bill) {
+        return billRepo.save(bill);
+    }
+
+    public Boolean deleteBillById(Long id) {
+
+        try {
+            billRepo.deleteById(id);
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 }
