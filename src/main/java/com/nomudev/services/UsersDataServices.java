@@ -25,19 +25,19 @@ public class UsersDataServices {
     @Autowired
     IUsersDataRepo usersDataRepo;
 
-    public List<usersDataModel> getAllBills() {
+    public List<usersDataModel> getAllUsers() {
         return usersDataRepo.findAll();
     }
 
-    public usersDataModel getBillById(Long id) {
+    public usersDataModel getUsersById(Long id) {
         return usersDataRepo.findById(id).orElse(null);
     }
 
-    public usersDataModel saveBill(usersDataModel bill) {
+    public usersDataModel saveUser(usersDataModel bill) {
         return usersDataRepo.save(bill);
     }
 
-    public Boolean deleteBillById(Long id) {
+    public Boolean deleteUserById(Long id) {
 
         try {
             usersDataRepo.deleteById(id);

@@ -14,6 +14,54 @@
 */
 package com.nomudev.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+import com.nomudev.models.ProviderModel;
+import com.nomudev.services.ProviderServices;
+
+@RestController
+@RequestMapping("/providers")
 public class ProviderController {
+    @Autowired
+    private ProviderServices providerServices;
+
+    @GetMapping
+    public List<ProviderModel> getAllProviders() {
+        return providerServices.getAllProviders();
+    }
+
+    @GetMapping("/{id}")
+
+    public ResponseEntity<ProviderModel> getProviderById(@PathVariable Long id) {
+        ProviderModel provider = providerServices.getProviderById(id);
+        if (provider != null) {
+            return ResponseEntity.ok(provider);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProviderById(@PathVariable Long id) {
+        Boolean isDeleted = providerServices.deleteProviderById(id);
+        if (isDeleted) {
+            return ResponseEntity.noContent().build(); // 204 No Content
+        } else {
+            return ResponseEntity.notFound().build(); // 404 Not Found
+        }
+    }
+
+    @PostMapping
+    public ProviderModel saveProvider(@RequestBody ProviderModel provider) {
+        return providerServices.saveProvider(provider);
+    }
 
 }

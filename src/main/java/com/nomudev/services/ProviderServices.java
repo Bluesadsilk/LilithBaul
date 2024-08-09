@@ -25,19 +25,19 @@ public class ProviderServices {
     @Autowired
     IProviderRepo providerRepo;
 
-    public List<ProviderModel> getAllCats() {
+    public List<ProviderModel> getAllProviders() {
         return providerRepo.findAll();
     }
 
-    public ProviderModel getCatById(Long id) {
+    public ProviderModel getProviderById(Long id) {
         return providerRepo.findById(id).orElse(null);
     }
 
-    public ProviderModel saveBill(ProviderModel bill) {
+    public ProviderModel saveProvider(ProviderModel bill) {
         return providerRepo.save(bill);
     }
 
-    public Boolean deleteCatById(Long id) {
+    public Boolean deleteProviderById(Long id) {
 
         try {
             providerRepo.deleteById(id);

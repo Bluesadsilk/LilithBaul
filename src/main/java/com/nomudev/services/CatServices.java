@@ -33,7 +33,7 @@ public class CatServices {
         return catRepo.findById(id).orElse(null);
     }
 
-    public CatModel saveBill(CatModel bill) {
+    public CatModel saveCat(CatModel bill) {
         return catRepo.save(bill);
     }
 

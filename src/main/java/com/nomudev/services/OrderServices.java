@@ -26,19 +26,19 @@ public class OrderServices {
     @Autowired
     IOrderRepo orderRepo;
 
-    public List<OrderModel> getAllCats() {
+    public List<OrderModel> getAllOrders() {
         return orderRepo.findAll();
     }
 
-    public OrderModel getCatById(Long id) {
+    public OrderModel getOrderById(Long id) {
         return orderRepo.findById(id).orElse(null);
     }
 
-    public OrderModel saveBill(OrderModel bill) {
+    public OrderModel saveOrder(OrderModel bill) {
         return orderRepo.save(bill);
     }
 
-    public Boolean deleteCatById(Long id) {
+    public Boolean deleteOrderById(Long id) {
 
         try {
             orderRepo.deleteById(id);

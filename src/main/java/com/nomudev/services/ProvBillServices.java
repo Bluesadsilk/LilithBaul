@@ -25,19 +25,19 @@ public class ProvBillServices {
     @Autowired
     IProvBillRepo provBillRepo;
 
-    public List<ProvBillModel> getAllCats() {
+    public List<ProvBillModel> getAllProviderBills() {
         return provBillRepo.findAll();
     }
 
-    public ProvBillModel getCatById(Long id) {
+    public ProvBillModel getProviderBillById(Long id) {
         return provBillRepo.findById(id).orElse(null);
     }
 
-    public ProvBillModel saveBill(ProvBillModel bill) {
+    public ProvBillModel saveProviderBill(ProvBillModel bill) {
         return provBillRepo.save(bill);
     }
 
-    public Boolean deleteCatById(Long id) {
+    public Boolean deleteProviderBillById(Long id) {
 
         try {
             provBillRepo.deleteById(id);
