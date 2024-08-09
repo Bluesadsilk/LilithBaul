@@ -14,6 +14,41 @@
 */
 package com.nomudev.services;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nomudev.models.ClientModel;
+import com.nomudev.repositories.IClientRepo;
+
+@Service
 public class ClientServices {
+    @Autowired
+    private IClientRepo clientRepo;
+
+    public List<ClientModel> getAllClients() {
+        return clientRepo.findAll();
+    }
+
+    public ClientModel getClientById(Long id) {
+        return clientRepo.findById(id).orElse(null);
+    }
+
+    public ClientModel saveClient(ClientModel client) {
+        return clientRepo.save(client);
+    }
+
+    public Boolean deleteClientById(Long id) {
+
+        try {
+            clientRepo.deleteById(id);
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 
 }

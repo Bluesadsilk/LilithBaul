@@ -14,6 +14,23 @@
 */
 package com.nomudev.services;
 
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.nomudev.models.BillModel;
+import com.nomudev.repositories.IBillRepo;
+
+@Service
 public class BillServices {
+    @Autowired
+    IBillRepo billRepo;
+
+    public List<BillModel> getAllBills() {
+        return billRepo.findAll();
+    }
+
+    public BillModel getBillById(Long id) {
+        return billRepo.findById(id).orElse(null);
+    }
 
 }

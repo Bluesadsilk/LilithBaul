@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.nomudev")
 @EntityScan(basePackages = "com.nomudev.models")
 @EnableJpaRepositories(basePackages = "com.nomudev.repositories")
 public class LilithBaulApplication {

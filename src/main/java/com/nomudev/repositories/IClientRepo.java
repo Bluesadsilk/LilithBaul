@@ -20,6 +20,6 @@ import org.springframework.stereotype.Repository;
 import com.nomudev.models.ClientModel;
 
 @Repository
-public interface IClient extends JpaRepository<ClientModel, Long> {
+public interface IClientRepo extends JpaRepository<ClientModel, Long> {
 
 }
