@@ -27,6 +27,11 @@ import lombok.Data;
 public class ProductModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
+    private String name;
+    private String category;
+    private int amount;
+    private float price;
+    private String link;
 
 }

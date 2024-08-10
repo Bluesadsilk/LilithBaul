@@ -32,5 +32,6 @@ public class BillModel {
     private String name;
     private String email;
     private String nif;
+    private String link;
 
 }
