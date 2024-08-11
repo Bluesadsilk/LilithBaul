@@ -2,31 +2,38 @@
 
 ```mermaid
 erDiagram
-    CLIENTE {
+    CLIENTS {
         Integer id
-        varchar(9) nif
-        varchar nombre
-        varchar apellido
-        varchar email
-        varchar dirLine1
-        varchar dirLine2
-        varchar telefono
+        varchar(12) nif 
+        varchar(30) \_name\_ 
+        varchar(30) lastName 
+        varchar(30) email 
+        varchar(30) dirLine1 
+        varchar(30) dirLine2 
+        varchar(20) phoneNumber 
     }
 
     ORDERS {
         bigint id PK
         date fecha
         decimal total
-        bigint cliente_id
+        Integer cliente_id
     }
 
     PRODUCTS {
-        int id
-        varchar nombre
-        text descripcion
-        decimal precio
+        int id PK
+        varchar(30) nombre
+        varchar(50) descripcion
+        float precio
         int cantidad
-        varchar(4) talla
+    }
+
+    SIZES{
+        bigint id
+        varchar(2) name
+        int product_id FK
+        int amount
+
     }
 
     ORDER_LINE {
@@ -45,6 +52,6 @@ erDiagram
         bigint PRODUCTSo_id
     }
 
-    CLIENTE ||--o{ ORDERS : "realiza"
+    CLIENTS ||--o{ ORDERS : "realiza"
     ORDERS ||--|{ ORDER_LINE : "contiene"
     ORDER_LINE }o--|| PRODUCTS : "incluye"
