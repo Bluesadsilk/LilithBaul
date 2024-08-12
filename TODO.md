@@ -1,6 +1,13 @@
 # TODO LIST FOR LILITH'S VAULT 
 
 ## COPA PISTON
+### Winner :
+#### Competitors||SCORE
+
+    NM          ||O points;
+    PS          ||O points;
+    JA          ||O points;
+    MS          ||O points;
 
 ## GENERAL
     1. Donate Access on the Github's projects for the Team.
