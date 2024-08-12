@@ -21,7 +21,7 @@
     FRONTEND: HTML, CSS, Javascript, TypeScript, ReactJs, ReactNative, TailwindCSS.
     UI/UX DESIGN: FIGMA.
 
-## WHO WE ARE?
+## WHO ARE WE?
 We are a developers team formed by Multiplatform Applications Development degree classmates. We are collaborating in projects like this to improve our's skills like developers and software engineers. Asking our acquaintances for make improvements in their lifes through our the programming and developement habilities. All the best.
 
 ## TEAM
