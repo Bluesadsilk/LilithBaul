@@ -72,9 +72,9 @@ erDiagram
 
     CLIENTS {
         Integer id PK
-        varchar(12) clientNif 
+        varchar(12) clientNif
         varchar(30) clientName
-        varchar(30) clientLastName 
+        varchar(30) clientLastName
         varchar(30) clientEmail
         varchar(30) clientDirLine1
         varchar(30) clientDirLine2
@@ -84,7 +84,7 @@ erDiagram
         Integer providerId PK
         varchar(12) providerCif
         varchar(30) providerId
-        varchar(30) providerName 
+        varchar(30) providerName
         varchar(30) providerEmail
         varchar(30) providerDirLine1
         varchar(30) providerDirLine2
@@ -111,7 +111,7 @@ erDiagram
         varchar(10) type "INCOME or EXPENSE"
     }
 
- 
+
     CLIENTS ||--o{ ORDERS : "realiza"
     PROVIDERS ||--o{ BILLS : "emite"
     CLIENTS ||--o{ BILLS : "recibe"
@@ -120,3 +120,8 @@ erDiagram
     PRODUCTS ||--|{ SIZES : "se divide"
     ORDER_LINE }o--|| PRODUCTS : "incluyen"
     BILLS ||--|| MOVEMENTS : "refleja"
+
+    CATEGORIES ||--|| SUBCATEGORIES : "dividen"
+    ORDERS ||--|| ORDER_STATUS : "dividen"
+    SUBCATEGORIES ||--||PRODUCTS : contienen
+```
