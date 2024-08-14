@@ -1,78 +1,117 @@
 ```mermaid
 erDiagram
-    CLIENTS {
+
+  CATEGORIES{
         Integer id PK
-        varchar(12) nif 
-        varchar(30) name
-        varchar(30) last_Name 
-        varchar(30) email 
-        varchar(30) dir_Line_1 
-        varchar(30) dir_Line_2 
-        varchar(20) phoneNumber 
+        varchar(30) categorieName
     }
 
-    PROVIDERS {
+    SUBCATEGORIES{
         Integer id PK
-        varchar(12) cif 
-        varchar(30) name
-        varchar(30) last_Name 
-        varchar(30) email 
-        varchar(30) dir_Line_1 
-        varchar(30) dir_Line_2 
-        varchar(20) phoneNumber 
+        Integer catId FK
     }
 
-    BILLS {
-        bigint id PK
-        bigint entity_id FK
-        varchar(10) entity_type "CLIENT or PROVIDER"
-        bigint order_id FK
-        float total_amount
-        varchar(30) link_Bill_Image
-        date bill_Date
+        PRODUCTS {
+        int productId PK
+        varchar(30) productName
+        varchar(50) productDescription
+        float productPrice
+        float productCost
+        varchar() productImageLink
+
     }
 
-    MOVEMENTS {
-        bigint id PK
-        bigint bill_id FK
-        varchar(30) concept
-        float amount
-        date date
-        varchar(10) type "INCOME or EXPENSE"
+        VARIANTS{
+             Integer variantId
+             varchar(30) variantName
+             float variantPrice
+
+        }
+
+        SIZES {
+        Integer sizeId PK
+        varchar(2) sizeName
+        int product_id FK
+        int sizeStock
     }
 
-    ORDERS {
-        bigint id PK
-        Integer cliente_id FK
-        date order_Date
-        varchar(10) estado
+
+    DISCOUNTS{
+        Integer discountId PK
+        Integer productId FK
+        Integer variantId FK
+        float discountAmount
+    }
+
+       ORDER_STATUS {
+        Integer orderId FK
+        Integer statusId PK
+        varchar(30) statusName
+    }
+
+
+     ORDERS {
+        Integer orderId PK
+        Integer clientId FK
+        Integer statusId FK
+        date orderDate
         varchar(30) dirLine1
         varchar(30) dirline2
     }
 
-    PRODUCTS {
-        int id PK
-        varchar(30) nombre
-        varchar(50) descripcion
-        float precio
-        int cantidad
-    }
-
-    SIZES {
-        bigint id PK
-        varchar(2) name
-        int product_id FK
-        int amount
-    }
-
     ORDER_LINE {
-        bigint id PK
-        int cantidad
-        decimal precio_unitario
-        bigint ORDERS_id FK
-        bigint PRODUCTSo_id FK
+        Integer orderLine PK
+        Integer orderId FK
+        Integer productId
+        Integer variationId
+        Integer discountId
+        float   orderLineCost
+        Integer orderLineAmount
     }
 
+
+    CLIENTS {
+        Integer id PK
+        varchar(12) clientNif 
+        varchar(30) clientName
+        varchar(30) clientLastName 
+        varchar(30) clientEmail
+        varchar(30) clientDirLine1
+        varchar(30) clientDirLine2
+        varchar(20) clientPhoneNumber
+    }
+      PROVIDERS {
+        Integer providerId PK
+        varchar(12) providerCif
+        varchar(30) providerId
+        varchar(30) providerName 
+        varchar(30) providerEmail
+        varchar(30) providerDirLine1
+        varchar(30) providerDirLine2
+        varchar(20) providerPhoneNumber
+    }
+
+
+    BILLS {
+        Integer billId PK
+        Integer orderId FK
+        Integer orderId FK
+        varchar(10) entity_type "CLIENT or PROVIDER"
+        float   billAmount
+        varchar(30) billImageLink
+        date billDate
+    }
+
+    MOVEMENTS {
+        Integer movementId PK
+        Integer billId FK
+        varchar(30) movementConcept
+        float movementAmount
+        Date movementDate
+        varchar(10) type "INCOME or EXPENSE"
+    }
+
+ 
     CLIENTS ||--o{ ORDERS : "realiza"
     PROVIDERS ||--o{ BILLS : "emite"
     CLIENTS ||--o{ BILLS : "recibe"
