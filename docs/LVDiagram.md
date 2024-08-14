@@ -117,11 +117,13 @@ erDiagram
     CLIENTS ||--o{ BILLS : "recibe"
     ORDERS ||--|| BILLS : "reflejan"
     ORDERS ||--|{ ORDER_LINE : "contienen"
-    PRODUCTS ||--|{ SIZES : "se divide"
-    ORDER_LINE }o--|| PRODUCTS : "incluyen"
+
     BILLS ||--|| MOVEMENTS : "refleja"
 
     CATEGORIES ||--|| SUBCATEGORIES : "dividen"
     ORDERS ||--|| ORDER_STATUS : "dividen"
-    SUBCATEGORIES ||--||PRODUCTS : contienen
+    SUBCATEGORIES ||--||PRODUCTS : "contienen"
+    VARIANTS ||--|| SIZES : "contienen"
+    PRODUCTS ||--|| VARIANTS : "dividen"
+    ORDER_LINE }o--|| SIZES : "incluyen"
 ```
