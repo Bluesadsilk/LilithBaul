@@ -18,6 +18,7 @@ erDiagram
         float productPrice
         float productCost
         varchar() productImageLink
+        Boolean productDiscount
 
     }
 
