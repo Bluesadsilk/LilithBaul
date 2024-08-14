@@ -43,17 +43,13 @@ erDiagram
         float discountAmount
     }
 
-       ORDER_STATUS {
-        Integer orderId FK
-        Integer statusId PK
-        varchar(30) statusName
-    }
+
 
 
      ORDERS {
         Integer orderId PK
         Integer clientId FK
-        Integer statusId FK
+        Integer orderStatus
         date orderDate
         varchar(30) dirLine1
         varchar(30) dirline2
@@ -117,13 +113,13 @@ erDiagram
     CLIENTS ||--o{ BILLS : "recibe"
     ORDERS ||--|| BILLS : "reflejan"
     ORDERS ||--|{ ORDER_LINE : "contienen"
-
     BILLS ||--|| MOVEMENTS : "refleja"
 
     CATEGORIES ||--|| SUBCATEGORIES : "dividen"
-    ORDERS ||--|| ORDER_STATUS : "dividen"
     SUBCATEGORIES ||--||PRODUCTS : "contienen"
     VARIANTS ||--|| SIZES : "contienen"
     PRODUCTS ||--|| VARIANTS : "dividen"
-    ORDER_LINE }o--|| SIZES : "incluyen"
+    ORDER_LINE }o--|| SIZES : "include"
+    PRODUCTS ||--|| DISCOUNTS : "can have"
+
 ```
