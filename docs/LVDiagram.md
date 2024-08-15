@@ -61,9 +61,9 @@ erDiagram
     ORDER_LINE {
         Integer orderLine PK
         Integer orderId FK
-        Integer productId
-        Integer variationId
-        Integer discountId
+        Integer productId FK
+        Integer variationId FK
+        Integer discountId FK
         float   orderLineCost
         Integer orderLineAmount
     }
