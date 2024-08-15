@@ -2,18 +2,17 @@
 erDiagram
 
   CATEGORIES{
-        Integer id PK
-        varchar(30) categorieName
+        Integer categoryId PK
+        varchar(30) categoryName
     }
 
     SUBCATEGORIES{
         Integer id PK
         Integer catId FK
-        varchar(30) subcategoryName
     }
 
-    PRODUCTS {
-        integer productId PK
+        PRODUCTS {
+        int productId PK
         varchar(30) productName
         varchar(50) productDescription
         float productCost
@@ -42,8 +41,8 @@ erDiagram
 
     SIZES {
         Integer sizeId PK
-        varchar(2) sizeName
         int product_id FK
+        varchar(2) sizeName
         int sizeStock
     }
 
@@ -124,8 +123,6 @@ erDiagram
     ORDERS ||--|| BILLS : "reflejan"
     ORDERS ||--|{ ORDER_LINE : "contienen"
     BILLS ||--|| MOVEMENTS : "refleja"
-
-
 
     CATEGORIES ||--|| SUBCATEGORIES : "dividen"
     SUBCATEGORIES ||--||PRODUCTS : "contienen"
