@@ -2,7 +2,7 @@
 *
 * 
 *
-* Creada el 08 ago 2024, 14:32:06
+* Creada el 08 ago 2024, 14:31:05
 *
 * Desarrollada por Bluesadsilk en l'empresa Abastos el dia 08 ago 2024
 *
@@ -20,18 +20,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-import java.util.Date;
 
 @Entity
-@Table(name = "bills")
+@Table(name = "categories")
 @Data
-public class BillModel {
-
+public class SubcategoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long billId;
-    private int orderId;
-    private String entityType;
-    private float billAmount;
-    private Date billDate;
+    private Long subcategoryId;
+    private String subcategoryName;
+    private Long categoryid;
 }

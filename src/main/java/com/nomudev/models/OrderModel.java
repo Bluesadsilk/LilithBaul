@@ -20,6 +20,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import java.util.Date;
 
 @Entity
 @Table(name = "orders")
@@ -27,12 +28,12 @@ import lombok.Data;
 public class OrderModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nif;
-    private String name;
-    private String lastname;
-    private String lineDir1;
-    private String lineDir2;
-    private String date;
+    private Long orderId;
+    private Long clientId;
+    private int orderStatus;
+    private int orderType;
+    private Date orderDate;
+    private String orderDirLine1;
+    private String orderDirLine2;
 
 }
