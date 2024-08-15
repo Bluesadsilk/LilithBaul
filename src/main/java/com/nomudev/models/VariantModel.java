@@ -14,10 +14,16 @@
 */
 package com.nomudev.models;
 
+import java.util.List;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -28,9 +34,30 @@ public class VariantModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long variantId;
-    private Long productId;
-    private Long priceId;
+
+    @Column(length = 30, nullable = false)
     private String variantName;
+
+    @Column
     private String variantImageLink;
+
+    @Column(nullable = false)
     private Boolean variantHaveDiscount;
+
+    @ManyToOne
+    @JoinColumn(name = "productId", nullable = false)
+    private ProductModel product;
+
+    @OneToMany(mappedBy = "variant")
+    private List<SizeModel> sizes;
+
+    @OneToMany(mappedBy = "variant")
+    private List<PriceModel> prices;
+
+    @OneToMany(mappedBy = "variant")
+    private List<DiscountModel> discounts;
+
+    @OneToMany(mappedBy = "variant")
+    private List<CostModel> costs;
+
 }

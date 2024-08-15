@@ -15,10 +15,13 @@
 package com.nomudev.models;
 
 import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity
@@ -28,7 +31,14 @@ public class SizeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sizeId;
-    private Long productId;
+
+    @Column(length = 30, nullable = false)
     private String sizeName;
+
+    @Column(nullable = false)
     private int sizeStock;
+
+    @ManyToOne
+    @JoinColumn(name = "variantId")
+    private ProductModel variant;
 }

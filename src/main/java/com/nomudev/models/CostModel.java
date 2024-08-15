@@ -14,10 +14,13 @@
 */
 package com.nomudev.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.Date;
@@ -30,8 +33,17 @@ public class CostModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long costId;
-    private Long variantId;
+
+    @Column(nullable = false)
     private float costAmount;
+
+    @Column(nullable = false)
     private Date costActiveFrom;
+
+    @Column(nullable = false)
     private Date costActiveUntil;
+
+    @ManyToOne
+    @JoinColumn(name = "variantId", nullable = false)
+    private VariantModel variantId;
 }
