@@ -2,7 +2,7 @@
 *
 * 
 *
-* Creada el 08 ago 2024, 14:31:05
+* Creada el 08 ago 2024, 14:32:06
 *
 * Desarrollada por Bluesadsilk en l'empresa Abastos el dia 08 ago 2024
 *
@@ -22,12 +22,15 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "subcategories")
+@Table(name = "variants")
 @Data
-public class SubcategoryModel {
+public class VariantModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long subcategoryId;
-    private String subcategoryName;
-    private Long categoryid;
+    private Long variantId;
+    private Long productId;
+    private Long priceId;
+    private String variantName;
+    private String variantImageLink;
+    private Boolean variantHaveDiscount;
 }
