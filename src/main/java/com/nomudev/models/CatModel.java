@@ -14,32 +14,20 @@
 */
 package com.nomudev.models;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "subcategories")
+@Table(name = "categories")
 @Data
-public class SubcategoryModel {
+public class CatModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long subcategoryId;
-    private String subcategoryName;
-
-    @ManyToOne
-    @JoinColumn(name = "categoryId", nullable = false)
-    private CategoryModel category;
-
-    @OneToMany(mappedBy = "subcategoryId")
-    private List<ProductModel> products;
-
+    private Long categoryId;
+    private String categoryName;
+    
 }

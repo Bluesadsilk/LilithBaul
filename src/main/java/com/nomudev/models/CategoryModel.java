@@ -34,4 +34,7 @@ public class CategoryModel {
 
     @OneToMany(mappedBy = "category")
     private List<SubcategoryModel> subcategories;
+
+    @OneToMany(mappedBy = "category")
+    private List<ProductModel> products;
 }
