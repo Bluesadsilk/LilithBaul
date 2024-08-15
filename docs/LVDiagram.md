@@ -70,7 +70,7 @@ erDiagram
         Integer orderId PK
         Integer clientId FK
         Integer orderStatus
-        varchar(30) orderType
+        Integer orderType
         date orderDate
         varchar(30) dirLine1
         varchar(30) dirline2

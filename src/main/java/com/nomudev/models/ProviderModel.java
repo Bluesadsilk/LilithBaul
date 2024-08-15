@@ -27,10 +27,11 @@ import lombok.Data;
 public class ProviderModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String cif;
-    private String name;
-    private String email;
-    private String phoneNumber;
-    private String bankNumber;
+    private Long providerId;
+    private String providerCif;
+    private String providerName;
+    private String providerEmail;
+    private String providerDirLane1;
+    private String providerDirLane2;
+    private String providerPhoneNumber;
 }

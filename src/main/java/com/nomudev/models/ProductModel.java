@@ -28,10 +28,9 @@ public class ProductModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String category;
-    private int amount;
-    private float price;
-    private String link;
-
+    private Long categoryID;
+    private Long subCategoryID;
+    private String productName;
+    private String productDescription;
+    private String productImageLink;
 }
