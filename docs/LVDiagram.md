@@ -7,49 +7,59 @@ erDiagram
     }
 
     SUBCATEGORIES{
-        Integer id PK
-        Integer catId FK
+        Integer subcategoryId PK
+        Integer categoryId FK
+        varchar(30) subcategoryName
     }
 
         PRODUCTS {
-        int productId PK
+        Integer productId PK
+        Integer categoryId FK
+        Integer subactegoryId FK
         varchar(30) productName
         varchar(50) productDescription
-        float productCost
         varchar() productImageLink
-        Boolean productDiscount
+
 
     }
 
-    PRIZES {
-        integer priceId  PK
+        VARIANTS{
+        Integer variantId PK
+        Integer productId FK
+        Integer priceId FK
+        varchar(30) variantName
+        varchar(244) variantImageLink
+        Boolean variantHaveDiscount
+    }
+
+      SIZES {
+        Integer sizeId PK
+        Integer product_id FK
+        varchar(2) sizeName
+        Integer sizeStock
+    }
+
+
+    PRICES {
+        Integer priceId  PK
+        Integer variantId FK
+        Float priceAmount
         date activeFrom
         date ActiveUntil
     }
 
     COSTS {
-        integer costId  PK
+        Integer costId  PK
+        Integer variantId FK
+        Float costAmount
         date activeFrom
         date ActiveUntil
     }
 
-    VARIANTS{
-        Integer variantId
-        varchar(30) variantName
-        float variantPrice
-    }
-
-    SIZES {
-        Integer sizeId PK
-        int product_id FK
-        varchar(2) sizeName
-        int sizeStock
-    }
 
 
     DISCOUNTS{
         Integer discountId PK
-        Integer productId FK
         Integer variantId FK
         float discountAmount
         date activeFrom
@@ -60,6 +70,7 @@ erDiagram
         Integer orderId PK
         Integer clientId FK
         Integer orderStatus
+        varchar(30) orderType
         date orderDate
         varchar(30) dirLine1
         varchar(30) dirline2
@@ -70,15 +81,13 @@ erDiagram
         Integer orderId FK
         Integer productId FK
         Integer variationId FK
-        Integer discountId FK
-        float   orderLineCost
         Integer orderLineAmount
     }
 
 
     CLIENTS {
-        Integer id PK
-        varchar(12) clientNif
+        Integer id
+        varchar(12) clientNif PK
         varchar(30) clientName
         varchar(30) clientLastName
         varchar(30) clientEmail
@@ -87,8 +96,8 @@ erDiagram
         varchar(20) clientPhoneNumber
     }
       PROVIDERS {
-        Integer providerId PK
-        varchar(12) providerCif
+        Integer providerId
+        varchar(12) providerCif PK
         varchar(30) providerId
         varchar(30) providerName
         varchar(30) providerEmail
@@ -99,7 +108,6 @@ erDiagram
 
     BILLS {
         Integer billId PK
-        Integer orderId FK
         Integer orderId FK
         varchar(10) entity_type "CLIENT or PROVIDER"
         float   billAmount
@@ -130,6 +138,6 @@ erDiagram
     PRODUCTS ||--|| VARIANTS : "dividen"
     ORDER_LINE }o--|| SIZES : "include"
     VARIANTS ||--|| DISCOUNTS : "can have"
-    VARIANTS ||--|| PRIZES : "have"
+    VARIANTS ||--|| PRICES : "have"
     VARIANTS ||--|| COSTS : "have"
 ```
