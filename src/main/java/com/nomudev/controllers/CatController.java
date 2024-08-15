@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
-import com.nomudev.models.CatModel;
+import com.nomudev.models.CategoryModel;
 import com.nomudev.services.CatServices;
 
 @RestController
@@ -34,14 +34,14 @@ public class CatController {
     private CatServices catService;
 
     @GetMapping
-    public List<CatModel> getCats() {
+    public List<CategoryModel> getCats() {
         return catService.getAllCats();
     }
 
     @GetMapping("/{id}")
 
-    public ResponseEntity<CatModel> getCatById(@PathVariable Long id) {
-        CatModel cat = catService.getCatById(id);
+    public ResponseEntity<CategoryModel> getCatById(@PathVariable Long id) {
+        CategoryModel cat = catService.getCatById(id);
         if (cat != null) {
             return ResponseEntity.ok(cat);
         } else {
@@ -60,7 +60,7 @@ public class CatController {
     }
 
     @PostMapping
-    public CatModel addOrder(@RequestBody CatModel cat) {
+    public CategoryModel addOrder(@RequestBody CategoryModel cat) {
         return catService.saveCat(cat);
     }
 

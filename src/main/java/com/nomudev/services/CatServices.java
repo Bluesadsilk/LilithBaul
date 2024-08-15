@@ -17,7 +17,7 @@ package com.nomudev.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import com.nomudev.models.CatModel;
+import com.nomudev.models.CategoryModel;
 import com.nomudev.repositories.ICatRepo;
 
 @Service
@@ -25,15 +25,15 @@ public class CatServices {
     @Autowired
     ICatRepo catRepo;
 
-    public List<CatModel> getAllCats() {
+    public List<CategoryModel> getAllCats() {
         return catRepo.findAll();
     }
 
-    public CatModel getCatById(Long id) {
+    public CategoryModel getCatById(Long id) {
         return catRepo.findById(id).orElse(null);
     }
 
-    public CatModel saveCat(CatModel bill) {
+    public CategoryModel saveCat(CategoryModel bill) {
         return catRepo.save(bill);
     }
 

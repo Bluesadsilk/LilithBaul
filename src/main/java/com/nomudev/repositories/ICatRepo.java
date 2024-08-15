@@ -16,9 +16,9 @@ package com.nomudev.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.nomudev.models.CatModel;
+import com.nomudev.models.CategoryModel;
 
 @Repository
-public interface ICatRepo extends JpaRepository<CatModel, Long> {
+public interface ICatRepo extends JpaRepository<CategoryModel, Long> {
 
 }
