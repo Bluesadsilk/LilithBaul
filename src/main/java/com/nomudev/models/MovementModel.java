@@ -2,17 +2,19 @@
 *
 * 
 *
-* Creada el 08 ago 2024, 14:32:06
+* Creada el 16 ago 2024, 1:08:51
 *
-* Desarrollada por Bluesadsilk en l'empresa Abastos el dia 08 ago 2024
+* Desarrollada por Bluesadsilk en l'empresa Abastos el dia 16 ago 2024
 *
 * Email de contacto: bluesadsilk@proton.me
 *
 *
 * @autor Bluesadsilk
-* @date 08 ago 2024
+* @date 16 ago 2024
 */
 package com.nomudev.models;
+
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,27 +27,28 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "orderLines")
+@Table(name = "movements")
 @Data
-public class OrderLineModel {
+public class MovementModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderLineId;
+    private Long movementId;
+
+    @Column(length = 30, nullable = false)
+    private String movementConcept;
 
     @Column(nullable = false)
-    private int orderLineAmount;
+    private float movementAmount;
+
+    @Column(nullable = false)
+    private Date movementDate;
+
+    @Column(length = 10, nullable = false)
+    private String movementType;
 
     @ManyToOne
-    @JoinColumn(name = "orderId", nullable = false)
-    private OrderModel order;
-
-    @ManyToOne
-    @JoinColumn(name = "productId", nullable = false)
-    private ProductModel product;
-
-    @ManyToOne
-    @JoinColumn(name = "variantId", nullable = false)
-    private VariantModel variant;
+    @JoinColumn(name = "billId", nullable = false)
+    private BillModel bill;
 
 }

@@ -57,7 +57,7 @@ public class VariantModel {
     @OneToMany(mappedBy = "variant")
     private List<DiscountModel> discounts;
 
-    @OneToMany(mappedBy = "variant")
+    @OneToMany(mappedBy = "variantId")
     private List<CostModel> costs;
 
 }

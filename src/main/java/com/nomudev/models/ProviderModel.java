@@ -14,12 +14,15 @@
 */
 package com.nomudev.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import java.util.List;
 
 @Entity
 @Table(name = "providers")
@@ -28,10 +31,25 @@ public class ProviderModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long providerId;
+
+    @Column(length = 12)
     private String providerCif;
+
+    @Column(length = 30, nullable = false)
     private String providerName;
+
+    @Column(length = 30, nullable = false)
     private String providerEmail;
-    private String providerDirLane1;
-    private String providerDirLane2;
+
+    @Column(length = 30, nullable = false)
+    private String providerDirLine1;
+
+    @Column(length = 30)
+    private String providerDirLine2;
+
+    @Column(length = 20, nullable = false)
     private String providerPhoneNumber;
+
+    @OneToMany(mappedBy = "providerId")
+    private List<BillModel> bills;
 }
