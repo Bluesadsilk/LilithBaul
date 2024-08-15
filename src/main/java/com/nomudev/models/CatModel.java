@@ -27,6 +27,6 @@ import lombok.Data;
 public class CatModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+    private Long categoryId;
+    private String categoryName;
 }

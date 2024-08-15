@@ -27,12 +27,13 @@ import lombok.Data;
 public class ClientModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nif;
-    private String name;
-    private String lastName;
-    private String email;
-    private String dirLine1;
-    private String dirLine2;
-    private String phoneNumber;
+    private Long clientId;
+    private String clientNif;
+    private String clientName;
+    private String clientLastName;
+    private String clientEmail;
+    private String clientDirLine1;
+    private String clientDirLine2;
+    private String clientPhoneNumber;
+
 }
