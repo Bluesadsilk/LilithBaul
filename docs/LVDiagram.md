@@ -9,27 +9,38 @@ erDiagram
     SUBCATEGORIES{
         Integer id PK
         Integer catId FK
+        varchar(30) subcategoryName
     }
 
-        PRODUCTS {
-        int productId PK
+    PRODUCTS {
+        integer productId PK
         varchar(30) productName
         varchar(50) productDescription
-        float productPrice
         float productCost
         varchar() productImageLink
         Boolean productDiscount
 
     }
 
-        VARIANTS{
-             Integer variantId
-             varchar(30) variantName
-             float variantPrice
+    PRIZES {
+        integer priceId  PK
+        date activeFrom
+        date ActiveUntil
+    }
 
-        }
+    COSTS {
+        integer costId  PK
+        date activeFrom
+        date ActiveUntil
+    }
 
-        SIZES {
+    VARIANTS{
+        Integer variantId
+        varchar(30) variantName
+        float variantPrice
+    }
+
+    SIZES {
         Integer sizeId PK
         varchar(2) sizeName
         int product_id FK
@@ -42,10 +53,9 @@ erDiagram
         Integer productId FK
         Integer variantId FK
         float discountAmount
+        date activeFrom
+        date ActiveUntil
     }
-
-
-
 
      ORDERS {
         Integer orderId PK
@@ -88,7 +98,6 @@ erDiagram
         varchar(20) providerPhoneNumber
     }
 
-
     BILLS {
         Integer billId PK
         Integer orderId FK
@@ -116,11 +125,14 @@ erDiagram
     ORDERS ||--|{ ORDER_LINE : "contienen"
     BILLS ||--|| MOVEMENTS : "refleja"
 
+
+
     CATEGORIES ||--|| SUBCATEGORIES : "dividen"
     SUBCATEGORIES ||--||PRODUCTS : "contienen"
     VARIANTS ||--|| SIZES : "contienen"
     PRODUCTS ||--|| VARIANTS : "dividen"
     ORDER_LINE }o--|| SIZES : "include"
-    PRODUCTS ||--|| DISCOUNTS : "can have"
-
+    VARIANTS ||--|| DISCOUNTS : "can have"
+    VARIANTS ||--|| PRIZES : "have"
+    VARIANTS ||--|| COSTS : "have"
 ```
