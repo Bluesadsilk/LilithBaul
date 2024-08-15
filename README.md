@@ -27,5 +27,5 @@ We are a developers team formed by Multiplatform Applications Development degree
 ## TEAM
 Project Manager -- Noel Muñoz as @Bluesadsilk, @nomudev on LinkedIn.
 MySql & Backend Developer -- Pablo Sancho as @pontugithubaqui.
-UI/UX Especialist -- Javier Amaya as @pontugithubaqui.
+UI/UX Especialist -- Javier Amaya as @Velguiem.
 Frontend Developer -- Marcos Solbes as @pontugithubaqui.
