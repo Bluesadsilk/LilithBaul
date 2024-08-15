@@ -19,6 +19,6 @@ import org.springframework.stereotype.Repository;
 import com.nomudev.models.CategoryModel;
 
 @Repository
-public interface ICatRepo extends JpaRepository<CategoryModel, Long> {
+public interface ICategoryRepo extends JpaRepository<CategoryModel, Long> {
 
 }

@@ -32,9 +32,9 @@ public class CategoryModel {
     private Long categoryId;
     private String categoryName;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "categoryId")
     private List<SubcategoryModel> subcategories;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "categoryId")
     private List<ProductModel> products;
 }

@@ -18,12 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.nomudev.models.CategoryModel;
-import com.nomudev.repositories.ICatRepo;
+import com.nomudev.repositories.ICategoryRepo;
 
 @Service
-public class CatServices {
+public class CategoryServices {
     @Autowired
-    ICatRepo catRepo;
+    ICategoryRepo catRepo;
 
     public List<CategoryModel> getAllCats() {
         return catRepo.findAll();

@@ -25,13 +25,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import com.nomudev.models.CategoryModel;
-import com.nomudev.services.CatServices;
+import com.nomudev.services.CategoryServices;
 
 @RestController
 @RequestMapping("/categories")
-public class CatController {
+public class CategoryController {
     @Autowired
-    private CatServices catService;
+    private CategoryServices catService;
 
     @GetMapping
     public List<CategoryModel> getCats() {
