@@ -25,22 +25,22 @@ public class SizeServices {
     @Autowired
     private ISizeRepo sizeRepo;
 
-    public List<SizeModel> getAllDiscounts() {
+    public List<SizeModel> getAllSizes() {
         return sizeRepo
                 .findAll();
     }
 
-    public SizeModel getDiscountById(long id) {
+    public SizeModel getSizeById(long id) {
         return sizeRepo
                 .findById(id).orElse(null);
     }
 
-    public SizeModel saveDiscount(SizeModel entity) {
+    public SizeModel saveSize(SizeModel entity) {
         return sizeRepo
                 .save(entity);
     }
 
-    public boolean deleteDiscoutById(Long id) {
+    public boolean deleteSizeById(Long id) {
         try {
             sizeRepo
                     .deleteById(id);

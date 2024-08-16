@@ -25,19 +25,19 @@ public class OrderLineServices {
     @Autowired
     private IOrderLineRepo orderLineRepo;
 
-    public List<OrderLineModel> getAllCosts() {
+    public List<OrderLineModel> getAllOrderLines() {
         return orderLineRepo.findAll();
     }
 
-    public OrderLineModel getCostById(Long id) {
+    public OrderLineModel getOrderLineById(Long id) {
         return orderLineRepo.findById(id).orElse(null);
     }
 
-    public OrderLineModel saveCost(OrderLineModel entity) {
+    public OrderLineModel saveOrderLine(OrderLineModel entity) {
         return orderLineRepo.save(entity);
     }
 
-    public boolean deleteCostById(Long id) {
+    public boolean deleteOrderLineById(Long id) {
         try {
             orderLineRepo.deleteById(id);
             return true;

@@ -25,19 +25,19 @@ public class PriceServices {
     @Autowired
     private IPriceRepo priceRepo;
 
-    public List<PriceModel> getAllDiscounts() {
+    public List<PriceModel> getAllPrices() {
         return priceRepo.findAll();
     }
 
-    public PriceModel getDiscountById(long id) {
+    public PriceModel getPriceById(long id) {
         return priceRepo.findById(id).orElse(null);
     }
 
-    public PriceModel saveDiscount(PriceModel entity) {
+    public PriceModel savePrice(PriceModel entity) {
         return priceRepo.save(entity);
     }
 
-    public boolean deleteDiscoutById(Long id) {
+    public boolean deletePriceById(Long id) {
         try {
             priceRepo.deleteById(id);
             return true;

@@ -25,19 +25,19 @@ public class VariantServices {
     @Autowired
     private IVariantRepo variantRepo;
 
-    public List<VariantModel> getAllCariants() {
+    public List<VariantModel> getAllVariants() {
         return variantRepo.findAll();
     }
 
-    public VariantModel getCariantById(Long id) {
+    public VariantModel getVariantById(Long id) {
         return variantRepo.findById(id).orElse(null);
     }
 
-    public VariantModel saveCariant(VariantModel entity) {
+    public VariantModel saveVariant(VariantModel entity) {
         return variantRepo.save(entity);
     }
 
-    public boolean deleteCariantById(Long id) {
+    public boolean deleteVariantById(Long id) {
         try {
             variantRepo.deleteById(id);
             return true;

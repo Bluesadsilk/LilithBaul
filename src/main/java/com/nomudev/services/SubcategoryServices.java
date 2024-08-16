@@ -25,19 +25,19 @@ public class SubcategoryServices {
     @Autowired
     private ISubcategoryRepo subcategoryRepo;
 
-    public List<SubcategoryModel> getAllDiscounts() {
+    public List<SubcategoryModel> getAllSubcategorys() {
         return subcategoryRepo.findAll();
     }
 
-    public SubcategoryModel getDiscountById(long id) {
+    public SubcategoryModel getSubcategoryById(long id) {
         return subcategoryRepo.findById(id).orElse(null);
     }
 
-    public SubcategoryModel saveDiscount(SubcategoryModel entity) {
+    public SubcategoryModel saveSubcategory(SubcategoryModel entity) {
         return subcategoryRepo.save(entity);
     }
 
-    public boolean deleteDiscoutById(Long id) {
+    public boolean deleteSubcategoryById(Long id) {
         try {
             subcategoryRepo
                     .deleteById(id);
