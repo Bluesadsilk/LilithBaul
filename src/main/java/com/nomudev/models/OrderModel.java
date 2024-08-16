@@ -25,16 +25,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.Date;
-import java.util.concurrent.atomic.LongAdder;
 import java.util.List;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "ORDERS")
 @Data
 public class OrderModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private LongAdder orderId;
+    private Long orderId;
 
     @Column(nullable = false)
     private int orderStatus;
@@ -55,10 +54,10 @@ public class OrderModel {
     @JoinColumn(name = "clientId", nullable = false)
     private ClientModel client;
 
-    @OneToMany(mappedBy = "orderId")
+    @OneToMany(mappedBy = "order")
     private List<OrderLineModel> orderLines;
 
-    @OneToMany(mappedBy = "orderId")
+    @OneToMany(mappedBy = "order")
     private List<BillModel> bills;
 
 }

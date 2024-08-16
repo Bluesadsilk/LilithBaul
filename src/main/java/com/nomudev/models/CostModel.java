@@ -26,7 +26,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Entity
-@Table(name = "costs")
+@Table(name = "COSTS")
 @Data
 public class CostModel {
 
@@ -45,5 +45,5 @@ public class CostModel {
 
     @ManyToOne
     @JoinColumn(name = "variantId", nullable = false)
-    private VariantModel variantId;
+    private VariantModel variant;
 }

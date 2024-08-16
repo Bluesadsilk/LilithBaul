@@ -26,7 +26,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "clients")
+@Table(name = "CLIENTS")
 @Data
 public class ClientModel {
     @Id
@@ -54,9 +54,9 @@ public class ClientModel {
     @Column(length = 30, nullable = false)
     private String clientPhoneNumber;
 
-    @OneToMany(mappedBy = "clientId")
+    @OneToMany(mappedBy = "client")
     private List<OrderModel> orders;
 
-    @OneToMany(mappedBy = "clientId")
+    @OneToMany(mappedBy = "client")
     private List<BillModel> bills;
 }

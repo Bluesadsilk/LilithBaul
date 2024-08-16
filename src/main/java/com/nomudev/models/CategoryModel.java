@@ -14,6 +14,7 @@
 */
 package com.nomudev.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,19 +26,20 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "CATEGORIES")
 @Data
 public class CategoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "categoryId")
     private Long categoryId;
 
     @Column(length = 30, nullable = false)
     private String categoryName;
 
-    @OneToMany(mappedBy = "categoryId")
+    @OneToMany(mappedBy = "category")
     private List<SubcategoryModel> subcategories;
 
-    @OneToMany(mappedBy = "categoryId")
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductModel> products;
 }

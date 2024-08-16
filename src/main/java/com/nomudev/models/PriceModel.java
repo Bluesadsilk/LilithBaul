@@ -26,7 +26,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Entity
-@Table(name = "prices")
+@Table(name = "PRICES")
 @Data
 public class PriceModel {
 

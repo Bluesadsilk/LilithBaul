@@ -25,7 +25,7 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "providers")
+@Table(name = "PROVIDERS")
 @Data
 public class ProviderModel {
     @Id
@@ -50,6 +50,6 @@ public class ProviderModel {
     @Column(length = 20, nullable = false)
     private String providerPhoneNumber;
 
-    @OneToMany(mappedBy = "providerId")
+    @OneToMany(mappedBy = "provider")
     private List<BillModel> bills;
 }

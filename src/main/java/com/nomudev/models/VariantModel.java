@@ -28,7 +28,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "variants")
+@Table(name = "VARIANTS")
 @Data
 public class VariantModel {
     @Id
@@ -57,7 +57,7 @@ public class VariantModel {
     @OneToMany(mappedBy = "variant")
     private List<DiscountModel> discounts;
 
-    @OneToMany(mappedBy = "variantId")
+    @OneToMany(mappedBy = "variant")
     private List<CostModel> costs;
 
 }

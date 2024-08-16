@@ -25,7 +25,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity
-@Table(name = "sizes")
+@Table(name = "SIZES")
 @Data
 public class SizeModel {
     @Id
@@ -40,5 +40,5 @@ public class SizeModel {
 
     @ManyToOne
     @JoinColumn(name = "variantId")
-    private ProductModel variant;
+    private VariantModel variant;
 }

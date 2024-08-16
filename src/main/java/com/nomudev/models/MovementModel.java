@@ -27,7 +27,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "movements")
+@Table(name = "MOVEMENTS")
 @Data
 public class MovementModel {
 

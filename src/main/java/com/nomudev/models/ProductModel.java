@@ -27,7 +27,7 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "products")
+@Table(name = "PRODUCTS")
 @Data
 public class ProductModel {
     @Id
@@ -51,6 +51,6 @@ public class ProductModel {
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
 
-    @OneToMany(mappedBy = "productId")
+    @OneToMany(mappedBy = "product")
     private List<VariantModel> variants;
 }

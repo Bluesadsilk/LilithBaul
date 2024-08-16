@@ -28,7 +28,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "subcategories")
+@Table(name = "SUBCATEGORIES")
 @Data
 public class SubcategoryModel {
     @Id
@@ -42,7 +42,7 @@ public class SubcategoryModel {
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
 
-    @OneToMany(mappedBy = "subcategoryId")
+    @OneToMany(mappedBy = "subcategory")
     private List<ProductModel> products;
 
 }

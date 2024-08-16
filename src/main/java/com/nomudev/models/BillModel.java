@@ -14,24 +14,48 @@
 */
 package com.nomudev.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.Date;
 
 @Entity
-@Table(name = "bills")
+@Table(name = "BILLS")
 @Data
 public class BillModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long billId;
-    private int orderId;
+
+    @Column(length = 10, nullable = false)
     private String entityType;
+
+    @Column(nullable = false)
     private float billAmount;
+
+    @Column(nullable = false)
     private Date billDate;
+
+    @Column(nullable = false)
+    private String billImageLink;
+
+    @ManyToOne
+    @JoinColumn(name = "clientId")
+    private ClientModel client;
+
+    @ManyToOne
+    @JoinColumn(name = "providerId")
+    private ProviderModel provider;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private OrderModel order;
+
 }

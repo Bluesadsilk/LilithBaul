@@ -25,7 +25,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "orderLines")
+@Table(name = "ORDERLINES")
 @Data
 public class OrderLineModel {
 
