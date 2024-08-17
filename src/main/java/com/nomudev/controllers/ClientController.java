@@ -15,10 +15,14 @@
 package com.nomudev.controllers;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,8 +40,9 @@ public class ClientController {
     private ClientServices clientServices;
 
     @GetMapping
-    public List<ClientModel> getAllClients() {
-        return clientServices.getAllClients();
+    public ResponseEntity<List<ClientModel>> getAllClients() {
+        List<ClientModel> clients = clientServices.getAllClients();
+        return ResponseEntity.ok(clients);
     }
 
     @GetMapping("/{id}")
@@ -62,8 +67,28 @@ public class ClientController {
     }
 
     @PostMapping
-    public ClientModel addClient(@RequestBody ClientModel client) {
-        return clientServices.saveClient(client);
+    public ResponseEntity<ClientModel> addClient(@RequestBody ClientModel client) {
+        ClientModel savedClient = clientServices.saveClient(client);
+        return new ResponseEntity<>(savedClient, HttpStatus.CREATED);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<ClientModel> updateClientFields(
+            @PathVariable Long id,
+            @RequestBody Map<String, Object> updates) {
+        try {
+            ClientModel updatedClient = clientServices.updateClientField(id, updates);
+            return new ResponseEntity<>(updatedClient, HttpStatus.OK);
+
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.notFound().build();
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
 }

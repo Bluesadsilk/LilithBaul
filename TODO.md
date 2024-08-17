@@ -1,7 +1,9 @@
-# TODO LIST FOR LILITH'S VAULT 
+# TODO LIST FOR LILITH'S VAULT
 
 ## COPA PISTON
+
 ### Winner :
+
 #### Competitors||SCORE
 
     NM          ||O points;
@@ -10,13 +12,14 @@
     MS          ||O points;
 
 ## GENERAL
+
     1. Donate Access on the Github's projects for the Team.
     2. Write Requeriments and Function's of the App.
 
 ## BACKEND
 
     1. Update the entity models according to the new ER Diagram.
-    2. Insert into tables dummy data for testing.
+    2. Insert into tables dummy data for testing().
     3. Create Class Diagram on Mermaid.
     4. Program the cascade delete.
     5. Create necesary triggers(will be added here).
