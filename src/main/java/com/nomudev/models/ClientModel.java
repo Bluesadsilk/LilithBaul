@@ -33,25 +33,25 @@ public class ClientModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long clientId;
 
-    @Column(length = 30, nullable = false)
+    @Column(name = "client_nif", length = 30, nullable = false)
     private String clientNif;
 
-    @Column(length = 50, nullable = false)
+    @Column(name = "client_name", length = 50, nullable = false)
     private String clientName;
 
-    @Column(length = 50)
+    @Column(name = "client_lastname", length = 50)
     private String clientLastName;
 
-    @Column(length = 30, nullable = false)
+    @Column(name = "client_email", length = 30, nullable = false)
     private String clientEmail;
 
-    @Column(length = 50)
+    @Column(name = "client_dir_Line_2", length = 50)
     private String clientDirLine1;
 
-    @Column(length = 50)
+    @Column(name = "client_dir_Line_1", length = 50)
     private String clientDirLine2;
 
-    @Column(length = 30, nullable = false)
+    @Column(name = "client_phone_number", length = 30, nullable = false)
     private String clientPhoneNumber;
 
     @OneToMany(mappedBy = "client")
