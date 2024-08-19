@@ -45,10 +45,10 @@ public class OrderModel {
     private Date orderDate;
 
     @Column(length = 30, nullable = false)
-    private String dirLine1;
+    private String orderDirLine1;
 
     @Column(length = 30)
-    private String dirLine2;
+    private String orderDirLine2;
 
     @ManyToOne
     @JoinColumn(name = "clientId", nullable = false)

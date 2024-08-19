@@ -13,10 +13,13 @@ Email de contacto:bluesadsilk@proton.me
 package com.nomudev.services;
 
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nomudev.models.SizeModel;
 import com.nomudev.models.SizeModel;
 import com.nomudev.repositories.ISizeRepo;
 
@@ -48,6 +51,53 @@ public class SizeServices {
 
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public SizeModel updateSizeField(Long id, Map<String, Object> updates) {
+        SizeModel size;
+
+        // Intentar obtener la talla por ID
+        try {
+            size = sizeRepo.findById(id)
+                    .orElseThrow(() -> new NoSuchElementException("Size not found with id " + id));
+        } catch (NoSuchElementException e) {
+            // Manejar el caso cuando la talla no se encuentra
+            System.err.println(e.getMessage());
+            throw e; // Re-lanzar para permitir que el llamador maneje el error
+        }
+
+        // Intentar actualizar los campos
+        try {
+            updates.forEach((field, value) -> {
+                switch (field) {
+                    case "id":
+                        size.setSizeId((Long) value);
+                        break;
+                    case "name":
+                        size.setSizeName((String) value);
+                        break;
+                    case "stock":
+                        size.setSizeStock((int) value);
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unknown field: " + field);
+                }
+            });
+        } catch (IllegalArgumentException e) {
+            // Manejar el caso cuando se pasa un campo desconocido
+            System.err.println(e.getMessage());
+            throw e; // Re-lanzar para permitir que el llamador maneje el error
+        }
+
+        // Intentar guardar la talla actualizado
+        try {
+            return sizeRepo.save(size);
+        } catch (Exception e) {
+            // Manejar cualquier excepción que pueda ocurrir durante el guardado
+            System.err.println("Error saving size: " + e.getMessage());
+            throw new RuntimeException("Error saving size", e); // Re-lanzar para permitir que el llamador maneje el
+                                                                // error
         }
     }
 }

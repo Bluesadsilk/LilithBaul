@@ -34,7 +34,7 @@ public class OrderLineModel {
     private Long orderLineId;
 
     @Column(nullable = false)
-    private int orderLineAmount;
+    private float orderLineAmount;
 
     @ManyToOne
     @JoinColumn(name = "orderId", nullable = false)

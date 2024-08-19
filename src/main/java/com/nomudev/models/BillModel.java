@@ -35,7 +35,7 @@ public class BillModel {
     private Long billId;
 
     @Column(length = 10, nullable = false)
-    private String entityType;
+    private String billEntityType;
 
     @Column(nullable = false)
     private float billAmount;

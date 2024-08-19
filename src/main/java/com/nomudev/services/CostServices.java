@@ -12,11 +12,12 @@ Email de contacto:bluesadsilk@proton.me
 */
 package com.nomudev.services;
 
+import java.sql.Date;
 import java.util.List;
-
+import java.util.Map;
+import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.nomudev.models.CostModel;
 import com.nomudev.repositories.ICostRepo;
 
@@ -44,6 +45,56 @@ public class CostServices {
 
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public CostModel updateCostField(Long id, Map<String, Object> updates) {
+        CostModel cost;
+
+        // Intentar obtener el coste por ID
+        try {
+            cost = costRepo.findById(id)
+                    .orElseThrow(() -> new NoSuchElementException("cost not found with id " + id));
+        } catch (NoSuchElementException e) {
+            // Manejar el caso cuando el coste no se encuentra
+            System.err.println(e.getMessage());
+            throw e; // Re-lanzar para permitir que el llamador maneje el error
+        }
+
+        // Intentar actualizar los campos
+        try {
+            updates.forEach((field, value) -> {
+                switch (field) {
+                    case "costId":
+                        cost.setCostId((Long) value);
+                        break;
+                    case "lastName":
+                        cost.setCostAmount((Long) value);
+                        break;
+                    case "nif":
+                        cost.setCostActiveFrom((Date) value);
+                        break;
+                    case "email":
+                        cost.setCostActiveUntil((Date) value);
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unknown field: " + field);
+                }
+            });
+        } catch (IllegalArgumentException e) {
+            // Manejar el caso cuando se pasa un campo desconocido
+            System.err.println(e.getMessage());
+            throw e; // Re-lanzar para permitir que el llamador maneje el error
+        }
+
+        // Intentar guardar el coste actualizado
+        try {
+            return costRepo.save(cost);
+        } catch (Exception e) {
+            // Manejar cualquier excepción que pueda ocurrir durante el guardado
+            System.err.println("Error saving cost: " + e.getMessage());
+            throw new RuntimeException("Error saving cost", e); // Re-lanzar para permitir que el llamador maneje el
+                                                                // error
         }
     }
 

@@ -13,10 +13,10 @@ Email de contacto:bluesadsilk@proton.me
 package com.nomudev.services;
 
 import java.util.List;
-
+import java.util.Map;
+import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.nomudev.models.VariantModel;
 import com.nomudev.repositories.IVariantRepo;
 
@@ -44,6 +44,56 @@ public class VariantServices {
 
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public VariantModel updateVariantField(Long id, Map<String, Object> updates) {
+        VariantModel variant;
+
+        // Intentar obtener la variante por ID
+        try {
+            variant = variantRepo.findById(id)
+                    .orElseThrow(() -> new NoSuchElementException("Variant not found with id " + id));
+        } catch (NoSuchElementException e) {
+            // Manejar el caso cuando la variante no se encuentra
+            System.err.println(e.getMessage());
+            throw e; // Re-lanzar para permitir que el llamador maneje el error
+        }
+
+        // Intentar actualizar los campos
+        try {
+            updates.forEach((field, value) -> {
+                switch (field) {
+                    case "id":
+                        variant.setVariantId((Long) value);
+                        break;
+                    case "name":
+                        variant.setVariantName((String) value);
+                        break;
+                    case "imageLink":
+                        variant.setVariantImageLink((String) value);
+                        break;
+                    case "haveDiscount":
+                        variant.setVariantHaveDiscount((boolean) value);
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unknown field: " + field);
+                }
+            });
+        } catch (IllegalArgumentException e) {
+            // Manejar el caso cuando se pasa un campo desconocido
+            System.err.println(e.getMessage());
+            throw e; // Re-lanzar para permitir que el llamador maneje el error
+        }
+
+        // Intentar guardar la variante actualizado
+        try {
+            return variantRepo.save(variant);
+        } catch (Exception e) {
+            // Manejar cualquier excepción que pueda ocurrir durante el guardado
+            System.err.println("Error saving variant: " + e.getMessage());
+            throw new RuntimeException("Error saving variant", e); // Re-lanzar para permitir que el llamador maneje el
+                                                                   // error
         }
     }
 

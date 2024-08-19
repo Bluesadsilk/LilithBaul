@@ -17,6 +17,8 @@ package com.nomudev.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import com.nomudev.models.ProductModel;
 import com.nomudev.repositories.IProductRepo;
 
@@ -49,4 +51,53 @@ public class ProductServices {
 
     }
 
+    public ProductModel updateProductField(Long id, Map<String, Object> updates) {
+        ProductModel product;
+
+        // Intentar obtener el producto por ID
+        try {
+            product = productRepo.findById(id)
+                    .orElseThrow(() -> new NoSuchElementException("Product not found with id " + id));
+        } catch (NoSuchElementException e) {
+            // Manejar el caso cuando el producto no se encuentra
+            System.err.println(e.getMessage());
+            throw e; // Re-lanzar para permitir que el llamador maneje el error
+        }
+
+        // Intentar actualizar los campos
+        try {
+            updates.forEach((field, value) -> {
+                switch (field) {
+                    case "id":
+                        product.setProductId((Long) value);
+                        break;
+                    case "name":
+                        product.setProductName((String) value);
+                        break;
+                    case "description":
+                        product.setProductDescription((String) value);
+                        break;
+                    case "imageLink":
+                        product.setProductImageLink((String) value);
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unknown field: " + field);
+                }
+            });
+        } catch (IllegalArgumentException e) {
+            // Manejar el caso cuando se pasa un campo desconocido
+            System.err.println(e.getMessage());
+            throw e; // Re-lanzar para permitir que el llamador maneje el error
+        }
+
+        // Intentar guardar el producto actualizado
+        try {
+            return productRepo.save(product);
+        } catch (Exception e) {
+            // Manejar cualquier excepción que pueda ocurrir durante el guardado
+            System.err.println("Error saving product: " + e.getMessage());
+            throw new RuntimeException("Error saving product", e); // Re-lanzar para permitir que el llamador maneje el
+                                                                   // error
+        }
+    }
 }

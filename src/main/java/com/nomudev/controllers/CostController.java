@@ -13,17 +13,21 @@ Email de contacto:bluesadsilk@proton.me
 package com.nomudev.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nomudev.models.ClientModel;
 import com.nomudev.models.CostModel;
 import com.nomudev.services.CostServices;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,16 +36,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/costs")
 public class CostController {
     @Autowired
-    private CostServices CostService;
+    private CostServices costService;
 
     @GetMapping()
     public List<CostModel> get() {
-        return CostService.getAllCosts();
+        return costService.getAllCosts();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CostModel> getCostByName(@PathVariable Long id) {
-        CostModel cost = CostService.getCostById(id);
+        CostModel cost = costService.getCostById(id);
         if (cost != null) {
             return ResponseEntity.ok(cost);
         } else {
@@ -51,7 +55,7 @@ public class CostController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCostById(@PathVariable Long id) {
-        Boolean isDeleted = CostService.deleteCostById(id);
+        Boolean isDeleted = costService.deleteCostById(id);
         if (isDeleted) {
             return ResponseEntity.noContent().build(); // 204 No Content
         } else {
@@ -60,7 +64,27 @@ public class CostController {
     }
 
     @PostMapping
-    public CostModel addClient(@RequestBody CostModel cost) {
-        return CostService.saveCost(cost);
+    public CostModel addCost(@RequestBody CostModel cost) {
+        return costService.saveCost(cost);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<CostModel> updateCostFields(
+            @PathVariable Long id,
+            @RequestBody Map<String, Object> updates) {
+        try {
+            CostModel updatedCost = costService.updateCostField(id, updates);
+            return new ResponseEntity<>(updatedCost, HttpStatus.OK);
+
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.notFound().build();
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
     }
 }

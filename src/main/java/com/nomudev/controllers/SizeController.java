@@ -13,11 +13,14 @@ Email de contacto:bluesadsilk@proton.me
 package com.nomudev.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,23 +28,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nomudev.models.SizeModel;
+import com.nomudev.models.SizeModel;
 import com.nomudev.services.SizeServices;
 
 @RestController
 @RequestMapping("/sizes")
 public class SizeController {
     @Autowired
-    private SizeServices SizeService;
+    private SizeServices sizeServices;
 
     @GetMapping
     public List<SizeModel> get() {
-        return SizeService.getAllSizes();
+        return sizeServices.getAllSizes();
     }
 
     @GetMapping("/{id}")
 
     public ResponseEntity<SizeModel> getSizeById(@PathVariable Long id) {
-        SizeModel size = SizeService.getSizeById(id);
+        SizeModel size = sizeServices.getSizeById(id);
         if (size != null) {
             return ResponseEntity.ok(size);
         } else {
@@ -51,7 +55,7 @@ public class SizeController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSizeById(@PathVariable Long id) {
-        Boolean isDeleted = SizeService.deleteSizeById(id);
+        Boolean isDeleted = sizeServices.deleteSizeById(id);
         if (isDeleted) {
             return ResponseEntity.noContent().build(); // 204 No Content
         } else {
@@ -60,7 +64,27 @@ public class SizeController {
     }
 
     @PostMapping
-    public SizeModel addClient(@RequestBody SizeModel size) {
-        return SizeService.saveSize(size);
+    public SizeModel addSize(@RequestBody SizeModel size) {
+        return sizeServices.saveSize(size);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<SizeModel> updateSizeFields(
+            @PathVariable Long id,
+            @RequestBody Map<String, Object> updates) {
+        try {
+            SizeModel updatedSize = sizeServices.updateSizeField(id, updates);
+            return new ResponseEntity<>(updatedSize, HttpStatus.OK);
+
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.notFound().build();
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
     }
 }
