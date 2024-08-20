@@ -19,10 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Locale.Category;
-
 import com.nomudev.models.CategoryModel;
-
 import com.nomudev.repositories.ICategoryRepo;
 
 @Service
