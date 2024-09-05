@@ -45,6 +45,7 @@ public class SubcategoryModel {
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "subcategory")
     private List<ProductModel> products;
 

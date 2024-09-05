@@ -26,6 +26,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "PRODUCTS")
 @Data
@@ -44,10 +46,12 @@ public class ProductModel {
     private String productImageLink;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "subcategoryId", nullable = false)
     private SubcategoryModel subcategory;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
 

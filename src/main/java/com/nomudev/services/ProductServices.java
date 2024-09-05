@@ -31,6 +31,10 @@ public class ProductServices {
         return productRepo.findAll();
     }
 
+    public Long countAllProducts() {
+        return productRepo.count();
+    }
+
     public ProductModel getProductById(Long id) {
         return productRepo.findById(id).orElse(null);
     }

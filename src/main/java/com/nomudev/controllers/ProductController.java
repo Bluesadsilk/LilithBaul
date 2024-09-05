@@ -41,6 +41,11 @@ public class ProductController {
         return productServices.getAllProducts();
     }
 
+    @GetMapping("/count")
+    public Long countAllProducts() {
+        return productServices.countAllProducts();
+    }
+
     @GetMapping("/{id}")
 
     public ResponseEntity<ProductModel> getProductById(@PathVariable Long id) {
