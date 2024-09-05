@@ -16,6 +16,8 @@ package com.nomudev.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +40,7 @@ public class SubcategoryModel {
     @Column(length = 30, nullable = false)
     private String subcategoryName;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
