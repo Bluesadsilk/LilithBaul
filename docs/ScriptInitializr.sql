@@ -129,3 +129,27 @@ SET @categoryIdRings = LAST_INSERT_ID();
 SET @categoryIdNecklaces = LAST_INSERT_ID();
 
 SET @categoryIdPendants = LAST_INSERT_ID();
+
+INSERT INTO
+    variants (
+        product_id,
+        variant_name,
+        variant_have_discount
+    )
+VALUES (2, 'base', 0);
+
+INSERT INTO
+    variants (
+        product_id,
+        variant_name,
+        variant_have_discount
+    )
+VALUES (2, 'rubí', 0);
+
+INSERT INTO
+    variants (
+        product_id,
+        variant_name,
+        variant_have_discount
+    )
+VALUES (2, 'diamante', 0);
