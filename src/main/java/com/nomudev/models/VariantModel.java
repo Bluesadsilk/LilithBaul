@@ -16,6 +16,9 @@ package com.nomudev.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,19 +47,24 @@ public class VariantModel {
     @Column(nullable = false)
     private Boolean variantHaveDiscount;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "productId", nullable = false)
     private ProductModel product;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "variant")
     private List<SizeModel> sizes;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "variant")
     private List<PriceModel> prices;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "variant")
     private List<DiscountModel> discounts;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "variant")
     private List<CostModel> costs;
 
