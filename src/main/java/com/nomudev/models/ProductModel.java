@@ -26,7 +26,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "PRODUCTS")
@@ -45,16 +46,17 @@ public class ProductModel {
     @Column
     private String productImageLink;
 
+    @JsonBackReference
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "subcategoryId", nullable = false)
     private SubcategoryModel subcategory;
 
+    @JsonBackReference
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product")
     private List<VariantModel> variants;
 }

@@ -25,6 +25,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "CATEGORIES")
 @Data
@@ -37,9 +39,11 @@ public class CategoryModel {
     @Column(length = 30, nullable = false)
     private String categoryName;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "category")
     private List<SubcategoryModel> subcategories;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductModel> products;
 }

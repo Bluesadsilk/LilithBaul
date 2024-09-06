@@ -16,7 +16,8 @@ package com.nomudev.models;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,12 +41,12 @@ public class SubcategoryModel {
     @Column(length = 30, nullable = false)
     private String subcategoryName;
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "subcategory")
     private List<ProductModel> products;
 
