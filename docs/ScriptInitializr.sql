@@ -1,4 +1,4 @@
-INSERT INTO categories (categoryName) VALUES ("Rings");
+INSERT INTO categories (category_name) VALUES ("Rings");
 
 INSERT INTO categories (category_name) VALUES ('Necklaces');
 
