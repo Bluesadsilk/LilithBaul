@@ -41,13 +41,13 @@ public class SubcategoryModel {
     @Column(length = 30, nullable = false)
     private String subcategoryName;
 
-    @JsonBackReference
     @ManyToOne
+    @JsonBackReference(value = "category-subcategories")
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "subcategory")
+    @JsonManagedReference(value = "category-products")
     private List<ProductModel> products;
 
 }

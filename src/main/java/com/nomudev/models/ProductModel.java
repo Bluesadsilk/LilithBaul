@@ -46,17 +46,17 @@ public class ProductModel {
     @Column
     private String productImageLink;
 
-    @JsonBackReference
     @ManyToOne
+    @JsonBackReference(value = "subcategory-products")
     @JoinColumn(name = "subcategoryId", nullable = false)
     private SubcategoryModel subcategory;
 
-    @JsonBackReference
     @ManyToOne
+    @JsonBackReference(value = "category-products")
     @JoinColumn(name = "categoryId", nullable = false)
     private CategoryModel category;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "product")
+    @JsonManagedReference(value = "product-variants")
     private List<VariantModel> variants;
 }

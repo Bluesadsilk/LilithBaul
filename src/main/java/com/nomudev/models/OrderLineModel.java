@@ -14,6 +14,8 @@
 */
 package com.nomudev.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,13 +40,16 @@ public class OrderLineModel {
 
     @ManyToOne
     @JoinColumn(name = "orderId", nullable = false)
+    @JsonBackReference
     private OrderModel order;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "productId", nullable = false)
     private ProductModel product;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "variantId", nullable = false)
     private VariantModel variant;
 

@@ -16,6 +16,8 @@ package com.nomudev.models;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,6 +50,7 @@ public class MovementModel {
     private String movementType;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "billId", nullable = false)
     private BillModel bill;
 

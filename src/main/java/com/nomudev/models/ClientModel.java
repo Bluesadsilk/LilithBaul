@@ -16,6 +16,8 @@ package com.nomudev.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -55,8 +57,10 @@ public class ClientModel {
     private String clientPhoneNumber;
 
     @OneToMany(mappedBy = "client")
+    @JsonManagedReference(value = "client-orders")
     private List<OrderModel> orders;
 
     @OneToMany(mappedBy = "client")
+    @JsonManagedReference(value = "client-bills")
     private List<BillModel> bills;
 }

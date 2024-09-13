@@ -15,6 +15,8 @@
 package com.nomudev.models;
 
 import jakarta.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,6 +41,7 @@ public class SizeModel {
     private int sizeStock;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "variantId")
     private VariantModel variant;
 }

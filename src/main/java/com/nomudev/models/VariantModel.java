@@ -47,25 +47,25 @@ public class VariantModel {
     @Column(nullable = false)
     private Boolean variantHaveDiscount;
 
-    @JsonBackReference
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "productId", nullable = false)
     private ProductModel product;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "variant")
+    @JsonManagedReference
     private List<SizeModel> sizes;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "variant")
+    @JsonManagedReference
     private List<PriceModel> prices;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "variant")
+    @JsonManagedReference
     private List<DiscountModel> discounts;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "variant")
+    @JsonManagedReference
     private List<CostModel> costs;
 
 }

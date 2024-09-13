@@ -25,6 +25,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "COSTS")
 @Data
@@ -44,6 +46,7 @@ public class CostModel {
     private Date costActiveUntil;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "variantId", nullable = false)
     private VariantModel variant;
 }

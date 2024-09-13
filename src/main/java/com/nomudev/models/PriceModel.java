@@ -25,6 +25,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "PRICES")
 @Data
@@ -44,6 +46,7 @@ public class PriceModel {
     private float priceAmount;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "variantId", nullable = false)
     private VariantModel variant;
 

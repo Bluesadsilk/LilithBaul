@@ -39,11 +39,11 @@ public class CategoryModel {
     @Column(length = 30, nullable = false)
     private String categoryName;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "category")
+    @JsonManagedReference(value = "category-subcategories")
     private List<SubcategoryModel> subcategories;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "category-products")
     private List<ProductModel> products;
 }

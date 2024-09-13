@@ -27,6 +27,9 @@ import lombok.Data;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "ORDERS")
 @Data
@@ -52,12 +55,15 @@ public class OrderModel {
 
     @ManyToOne
     @JoinColumn(name = "clientId", nullable = false)
+    @JsonBackReference
     private ClientModel client;
 
     @OneToMany(mappedBy = "order")
+    @JsonManagedReference
     private List<OrderLineModel> orderLines;
 
     @OneToMany(mappedBy = "order")
+    @JsonBackReference(value = "client-orders")
     private List<BillModel> bills;
 
 }

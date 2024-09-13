@@ -24,6 +24,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "PROVIDERS")
 @Data
@@ -51,5 +53,6 @@ public class ProviderModel {
     private String providerPhoneNumber;
 
     @OneToMany(mappedBy = "provider")
+    @JsonManagedReference
     private List<BillModel> bills;
 }
