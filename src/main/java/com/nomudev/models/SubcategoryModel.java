@@ -47,7 +47,7 @@ public class SubcategoryModel {
     private CategoryModel category;
 
     @OneToMany(mappedBy = "subcategory")
-    @JsonManagedReference(value = "category-products")
+    @JsonManagedReference(value = "subcategory-products")
     private List<ProductModel> products;
 
 }

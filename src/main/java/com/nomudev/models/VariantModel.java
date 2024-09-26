@@ -48,7 +48,7 @@ public class VariantModel {
     private Boolean variantHaveDiscount;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "product-variants")
     @JoinColumn(name = "productId", nullable = false)
     private ProductModel product;
 
