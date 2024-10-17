@@ -9,7 +9,10 @@ public class GroupsConfiguration {
 
     @Bean
     public GroupedOpenApi publicApi() {
-        return GroupedOpenApi.builder().group("user").pathsToExclude("/api/v2/**").pathsToMatch("/api/v1/**").build();
+        return GroupedOpenApi.builder()
+                .group("public-apis")
+                .packagesToScan("com.nomudev.controllers") // Cambia esto por el paquete donde están tus controladores
+                .build();
     }
 
 }
