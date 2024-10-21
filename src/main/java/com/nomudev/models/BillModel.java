@@ -1,27 +1,6 @@
-/*
-*
-* 
-*
-* Creada el 08 ago 2024, 14:32:06
-*
-* Desarrollada por Bluesadsilk en l'empresa Abastos el dia 08 ago 2024
-*
-* Email de contacto: bluesadsilk@proton.me
-*
-*
-* @autor Bluesadsilk
-* @date 08 ago 2024
-*/
 package com.nomudev.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Date;
 
@@ -50,18 +29,17 @@ public class BillModel {
     private String billImageLink;
 
     @ManyToOne
-    @JsonBackReference(value = "client-bills")
-    @JoinColumn(name = "clientId")
+    @JoinColumn(name = "clientId", nullable = false)
+    @JsonBackReference(value = "client-bills") // Asegúrate de que este valor coincide con el utilizado en ClientModel
     private ClientModel client;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "providerId")
+    @JsonBackReference(value = "provider-bills") // Cambia este valor para ser único
     private ProviderModel provider;
 
     @ManyToOne
-    @JsonManagedReference(value = "client-orders")
     @JoinColumn(name = "order_id")
+    @JsonManagedReference(value = "order-bills") // Asegúrate de que este valor coincide con el utilizado en OrderModel
     private OrderModel order;
-
 }

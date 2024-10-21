@@ -1,28 +1,6 @@
-/*
-*
-* 
-*
-* Creada el 08 ago 2024, 14:49:01
-*
-* Desarrollada por Bluesadsilk en l'empresa Abastos el dia 08 ago 2024
-*
-* Email de contacto: bluesadsilk@proton.me
-*
-*
-* @autor Bluesadsilk
-* @date 08 ago 2024
-*/
 package com.nomudev.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Date;
 import java.util.List;
@@ -55,7 +33,7 @@ public class OrderModel {
 
     @ManyToOne
     @JoinColumn(name = "clientId", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value = "client-orders")
     private ClientModel client;
 
     @OneToMany(mappedBy = "order")
@@ -63,7 +41,6 @@ public class OrderModel {
     private List<OrderLineModel> orderLines;
 
     @OneToMany(mappedBy = "order")
-    @JsonBackReference(value = "client-orders")
+    @JsonManagedReference(value = "order-bills")
     private List<BillModel> bills;
-
 }
