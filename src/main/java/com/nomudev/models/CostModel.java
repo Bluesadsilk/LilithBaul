@@ -46,7 +46,7 @@ public class CostModel {
     private Date costActiveUntil;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "variant-costs")
     @JoinColumn(name = "variantId", nullable = false)
     private VariantModel variant;
 }

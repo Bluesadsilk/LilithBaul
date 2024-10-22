@@ -46,7 +46,7 @@ public class PriceModel {
     private float priceAmount;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "variant-prices")
     @JoinColumn(name = "variantId", nullable = false)
     private VariantModel variant;
 

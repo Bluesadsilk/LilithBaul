@@ -5,7 +5,6 @@ import lombok.Data;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "BILLS")
@@ -40,6 +39,6 @@ public class BillModel {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    @JsonManagedReference(value = "order-bills") // Asegúrate de que este valor coincide con el utilizado en OrderModel
+    @JsonBackReference(value = "order-bill") // Asegúrate de que este valor coincide con el utilizado en OrderModel
     private OrderModel order;
 }

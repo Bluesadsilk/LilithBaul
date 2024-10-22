@@ -53,19 +53,19 @@ public class VariantModel {
     private ProductModel product;
 
     @OneToMany(mappedBy = "variant")
-    @JsonManagedReference
+    @JsonManagedReference(value = "variant-sizes")
     private List<SizeModel> sizes;
 
     @OneToMany(mappedBy = "variant")
-    @JsonManagedReference
+    @JsonManagedReference(value = "variant-prices")
     private List<PriceModel> prices;
 
     @OneToMany(mappedBy = "variant")
-    @JsonManagedReference
+    @JsonManagedReference(value = "variant-discounts")
     private List<DiscountModel> discounts;
 
     @OneToMany(mappedBy = "variant")
-    @JsonManagedReference
+    @JsonManagedReference(value = "variant-costs")
     private List<CostModel> costs;
 
 }

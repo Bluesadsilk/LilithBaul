@@ -46,7 +46,7 @@ public class DiscountModel {
     private Date discountActiveUntil;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "variant-discounts")
     @JoinColumn(name = "variantId", nullable = false)
     private VariantModel variant;
 }

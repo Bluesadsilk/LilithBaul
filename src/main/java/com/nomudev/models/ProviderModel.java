@@ -53,6 +53,6 @@ public class ProviderModel {
     private String providerPhoneNumber;
 
     @OneToMany(mappedBy = "provider")
-    @JsonManagedReference
+    @JsonManagedReference(value = "provider-bills")
     private List<BillModel> bills;
 }

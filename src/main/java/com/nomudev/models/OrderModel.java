@@ -32,15 +32,15 @@ public class OrderModel {
     private String orderDirLine2;
 
     @ManyToOne
-    @JoinColumn(name = "clientId", nullable = false)
+    @JoinColumn(name = "clientId", nullable = true)
     @JsonBackReference(value = "client-orders")
     private ClientModel client;
 
     @OneToMany(mappedBy = "order")
-    @JsonManagedReference
+    @JsonManagedReference(value = "order-orderLine")
     private List<OrderLineModel> orderLines;
 
     @OneToMany(mappedBy = "order")
-    @JsonManagedReference(value = "order-bills")
+    @JsonManagedReference(value = "order-bill")
     private List<BillModel> bills;
 }

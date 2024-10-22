@@ -41,7 +41,7 @@ public class SizeModel {
     private int sizeStock;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "variant-sizes")
     @JoinColumn(name = "variantId")
     private VariantModel variant;
 }

@@ -40,16 +40,16 @@ public class OrderLineModel {
 
     @ManyToOne
     @JoinColumn(name = "orderId", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value = "order-orderLine")
     private OrderModel order;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "product-orderLine")
     @JoinColumn(name = "productId", nullable = false)
     private ProductModel product;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "variant-Orderline")
     @JoinColumn(name = "variantId", nullable = false)
     private VariantModel variant;
 
