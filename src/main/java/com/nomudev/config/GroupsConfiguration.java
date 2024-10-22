@@ -11,7 +11,7 @@ public class GroupsConfiguration {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("public-apis")
-                .packagesToScan("com.nomudev.controllers") // Cambia esto por el paquete donde están tus controladores
+                .packagesToScan("com.nomudev.controllers")
                 .build();
     }
 
