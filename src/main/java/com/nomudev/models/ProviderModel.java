@@ -40,7 +40,7 @@ public class ProviderModel {
     @Column(length = 30, nullable = false)
     private String providerName;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 60, nullable = false)
     private String providerEmail;
 
     @Column(length = 30, nullable = false)
