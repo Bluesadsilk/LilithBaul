@@ -32,6 +32,7 @@ import lombok.Data;
 @Data
 public class ClientModel {
     @Id
+    @Column(name = "client_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long clientId;
 
