@@ -45,13 +45,13 @@ public class ClientModel {
     @Column(name = "client_lastname", length = 50)
     private String clientLastName;
 
-    @Column(name = "client_email", length = 30, nullable = false)
+    @Column(name = "client_email", length = 60, nullable = false)
     private String clientEmail;
 
-    @Column(name = "client_dir_Line_2", length = 50)
+    @Column(name = "client_dir_line_2", length = 50)
     private String clientDirLine1;
 
-    @Column(name = "client_dir_Line_1", length = 50)
+    @Column(name = "client_dir_line_1", length = 50)
     private String clientDirLine2;
 
     @Column(name = "client_phone_number", length = 30, nullable = false)

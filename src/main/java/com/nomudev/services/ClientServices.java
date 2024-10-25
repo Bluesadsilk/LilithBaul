@@ -69,25 +69,25 @@ public class ClientServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "name":
+                    case "clientName":
                         client.setClientName((String) value);
                         break;
                     case "lastName":
                         client.setClientLastName((String) value);
                         break;
-                    case "nif":
+                    case "clientNif":
                         client.setClientNif((String) value);
                         break;
-                    case "email":
+                    case "clientEmail":
                         client.setClientEmail((String) value);
                         break;
-                    case "phoneNumber":
+                    case "clientPhoneNumber":
                         client.setClientPhoneNumber((String) value);
                         break;
-                    case "lineDir1":
+                    case "clientLineDir1":
                         client.setClientDirLine1((String) value);
                         break;
-                    case "lineDir2":
+                    case "clientLineDir2":
                         client.setClientDirLine2((String) value);
                         break;
                     default:
