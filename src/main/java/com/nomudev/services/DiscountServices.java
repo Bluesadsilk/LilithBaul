@@ -65,16 +65,16 @@ public class DiscountServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "Id":
+                    case "discountId":
                         discount.setDiscountId((Long) value);
                         break;
-                    case "amount":
+                    case "discountAmount":
                         discount.setDiscountAmount((float) value);
                         break;
-                    case "activeFrom":
+                    case "discountActiveFrom":
                         discount.setDiscountActiveFrom((Date) value);
                         break;
-                    case "activeUntil":
+                    case "discountActiveUntil":
                         discount.setDiscountActiveUntil((Date) value);
                         break;
                     default:

@@ -68,13 +68,13 @@ public class SizeServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "sizeId":
                         size.setSizeId((Long) value);
                         break;
-                    case "name":
+                    case "sizeName":
                         size.setSizeName((String) value);
                         break;
-                    case "stock":
+                    case "sizeStock":
                         size.setSizeStock((int) value);
                         break;
                     default:

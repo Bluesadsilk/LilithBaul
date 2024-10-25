@@ -65,16 +65,16 @@ public class PriceServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "priceId":
                         price.setPriceId((Long) value);
                         break;
-                    case "activeFrom":
+                    case "priceActiveFrom":
                         price.setPriceActiveFrom((Date) value);
                         break;
-                    case "activeUntil":
+                    case "priceActiveUntil":
                         price.setPriceActiveUntil((Date) value);
                         break;
-                    case "amount":
+                    case "priceAmount":
                         price.setPriceAmount((float) value);
                         break;
                     default:

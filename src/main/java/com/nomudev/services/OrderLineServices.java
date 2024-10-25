@@ -64,10 +64,10 @@ public class OrderLineServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "orderLineID":
                         orderLine.setOrderLineId((Long) value);
                         break;
-                    case "amount":
+                    case "orderLineAmount":
                         orderLine.setOrderLineAmount((Long) value);
                         break;
 

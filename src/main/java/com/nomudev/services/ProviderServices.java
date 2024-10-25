@@ -68,25 +68,25 @@ public class ProviderServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "providerId":
                         provider.setProviderId((long) value);
                         break;
-                    case "cif":
+                    case "providerCif":
                         provider.setProviderCif((String) value);
                         break;
-                    case "name":
+                    case "providerName":
                         provider.setProviderName((String) value);
                         break;
-                    case "email":
+                    case "providerEmail":
                         provider.setProviderEmail((String) value);
                         break;
-                    case "dirLine1":
+                    case "providerDirLine1":
                         provider.setProviderDirLine1((String) value);
                         break;
-                    case "dirLine2":
+                    case "providerDirLine2":
                         provider.setProviderDirLine2((String) value);
                         break;
-                    case "phoneNumber":
+                    case "providerPhoneNumber":
                         provider.setProviderPhoneNumber((String) value);
                         break;
                     default:

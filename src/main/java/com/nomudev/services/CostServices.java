@@ -68,13 +68,13 @@ public class CostServices {
                     case "costId":
                         cost.setCostId((Long) value);
                         break;
-                    case "lastName":
+                    case "costAmount":
                         cost.setCostAmount((Long) value);
                         break;
-                    case "nif":
+                    case "costActiveFrom":
                         cost.setCostActiveFrom((Date) value);
                         break;
-                    case "email":
+                    case "costActiveUntil":
                         cost.setCostActiveUntil((Date) value);
                         break;
                     default:

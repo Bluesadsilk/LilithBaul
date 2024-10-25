@@ -67,10 +67,10 @@ public class SubcategoryServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "subcategoryId":
                         subcategory.setSubcategoryId((Long) value);
                         break;
-                    case "name":
+                    case "subcategoryName":
                         subcategory.setSubcategoryName((String) value);
                         break;
                     default:

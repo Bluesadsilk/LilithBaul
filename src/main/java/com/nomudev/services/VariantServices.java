@@ -64,16 +64,16 @@ public class VariantServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "variantId":
                         variant.setVariantId((Long) value);
                         break;
-                    case "name":
+                    case "variantName":
                         variant.setVariantName((String) value);
                         break;
-                    case "imageLink":
+                    case "variantImageLink":
                         variant.setVariantImageLink((String) value);
                         break;
-                    case "haveDiscount":
+                    case "variantHaveDiscount":
                         variant.setVariantHaveDiscount((boolean) value);
                         break;
                     default:

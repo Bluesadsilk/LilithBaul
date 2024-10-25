@@ -72,7 +72,7 @@ public class ClientServices {
                     case "clientName":
                         client.setClientName((String) value);
                         break;
-                    case "lastName":
+                    case "clientLastName":
                         client.setClientLastName((String) value);
                         break;
                     case "clientNif":

@@ -72,16 +72,16 @@ public class ProductServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "productId":
                         product.setProductId((Long) value);
                         break;
-                    case "name":
+                    case "productName":
                         product.setProductName((String) value);
                         break;
-                    case "description":
+                    case "productDescription":
                         product.setProductDescription((String) value);
                         break;
-                    case "imageLink":
+                    case "productImageLink":
                         product.setProductImageLink((String) value);
                         break;
                     default:

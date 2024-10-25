@@ -67,19 +67,19 @@ public class MovementServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "movementId":
                         movement.setMovementId((Long) value);
                         break;
-                    case "concept":
+                    case "movementConcept":
                         movement.setMovementConcept((String) value);
                         break;
-                    case "amount":
+                    case "movementAmount":
                         movement.setMovementAmount((Long) value);
                         break;
-                    case "date":
+                    case "movementDate":
                         movement.setMovementDate((Date) value);
                         break;
-                    case "type":
+                    case "movementType":
                         movement.setMovementType((String) value);
                         break;
                     default:

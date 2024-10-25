@@ -69,19 +69,19 @@ public class BillServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "billId":
                         bill.setBillId((Long) value);
                         break;
-                    case "entityType":
+                    case "billEntityType":
                         bill.setBillEntityType((String) value);
                         break;
-                    case "lastName":
+                    case "billLastName":
                         bill.setBillAmount((Float) value);
                         break;
-                    case "nif":
+                    case "billNif":
                         bill.setBillDate((Date) value);
                         break;
-                    case "email":
+                    case "billEmail":
                         bill.setBillImageLink((String) value);
                         break;
                     default:

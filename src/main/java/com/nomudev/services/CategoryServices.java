@@ -68,10 +68,10 @@ public class CategoryServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "Id":
+                    case "categoryId":
                         category.setCategoryId((Long) value);
                         break;
-                    case "lastName":
+                    case "categoryName":
                         category.setCategoryName((String) value);
                         break;
                     default:

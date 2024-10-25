@@ -70,22 +70,22 @@ public class OrderServices {
         try {
             updates.forEach((field, value) -> {
                 switch (field) {
-                    case "id":
+                    case "orderId":
                         order.setOrderId((Long) value);
                         break;
-                    case "lastName":
+                    case "orderStatus":
                         order.setOrderStatus((int) value);
                         break;
-                    case "nif":
+                    case "orderType":
                         order.setOrderType((int) value);
                         break;
-                    case "email":
+                    case "orderDate":
                         order.setOrderDate((Date) value);
                         break;
-                    case "dirLine1":
+                    case "orderDirLine1":
                         order.setOrderDirLine1((String) value);
                         break;
-                    case "dirLine2":
+                    case "orderDirLine2":
                         order.setOrderDirLine2((String) value);
                         break;
 
