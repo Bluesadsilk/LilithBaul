@@ -52,6 +52,9 @@ public class ProviderModel {
     @Column(length = 20, nullable = false)
     private String providerPhoneNumber;
 
+    @Column(length = 100, nullable = false)
+    private String providerDescription;
+
     @OneToMany(mappedBy = "provider")
     @JsonManagedReference(value = "provider-bills")
     private List<BillModel> bills;

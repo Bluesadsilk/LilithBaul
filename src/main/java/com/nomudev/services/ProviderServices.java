@@ -89,6 +89,9 @@ public class ProviderServices {
                     case "providerPhoneNumber":
                         provider.setProviderPhoneNumber((String) value);
                         break;
+                    case "providerDescription":
+                        provider.setProviderDescription((String) value);
+                        break;
                     default:
                         throw new IllegalArgumentException("Unknown field: " + field);
                 }
